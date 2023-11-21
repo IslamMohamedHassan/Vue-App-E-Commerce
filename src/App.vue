@@ -1,11 +1,16 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
+<script >
+import AppLayout from '@/components/global/AppLayout.vue';
+export default{
+  components:{
+    AppLayout,
+    
+  }
+}
 </script>
 <template>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-  <RouterView />
+  <app-layout>
+    <RouterView />
+  </app-layout>
 </template>
 
 <style scoped>

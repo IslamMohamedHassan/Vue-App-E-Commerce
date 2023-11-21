@@ -1,8 +1,10 @@
-<script setup>
+<script>
+  // import AppLayout from '@/components/global/AppLayout.vue';
+  export default{
+    name:"HomeView",
+  }
 </script>
 
 <template>
-  <main>
-    <h1>Home</h1>
-  </main>
+    <h1 class="home">this is Home</h1>
 </template>
