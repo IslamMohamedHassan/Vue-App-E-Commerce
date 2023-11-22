@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-app-bar color="#092999" height="fit-content">
+    <v-app-bar color="#092999" height="fit-content" absolute>
       <!-- <v-app-bar-nav-icon  @click="openCart"></v-app-bar-nav-icon> -->
       <v-container fluid>
         <v-row class="align-center">
@@ -19,9 +19,8 @@
               />
               <v-icon
                 style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);" size="x-large"
-                color="black" 
-                >mdi-magnify</v-icon
-              >
+                color="#333" 
+                >mdi-magnify</v-icon>
             </div>
           </v-col>
           <v-col class="d-flex justify-space-around align-center" cols="4">
@@ -54,35 +53,62 @@
             </div>
             <div class="d-flex flex-column align-center"  style=" cursor:pointer">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon icon-wishlist d-block" style="width: 35px; fill: #f7a833" viewBox="0 0 1024 1024" width="100%" height="100%"><title>user</title><path class="path1" d="M486.4 563.2c-155.275 0-281.6-126.325-281.6-281.6s126.325-281.6 281.6-281.6 281.6 126.325 281.6 281.6-126.325 281.6-281.6 281.6zM486.4 51.2c-127.043 0-230.4 103.357-230.4 230.4s103.357 230.4 230.4 230.4c127.042 0 230.4-103.357 230.4-230.4s-103.358-230.4-230.4-230.4z"></path><path class="path2" d="M896 1024h-819.2c-42.347 0-76.8-34.451-76.8-76.8 0-3.485 0.712-86.285 62.72-168.96 36.094-48.126 85.514-86.36 146.883-113.634 74.957-33.314 168.085-50.206 276.797-50.206 108.71 0 201.838 16.893 276.797 50.206 61.37 27.275 110.789 65.507 146.883 113.634 62.008 82.675 62.72 165.475 62.72 168.96 0 42.349-34.451 76.8-76.8 76.8zM486.4 665.6c-178.52 0-310.267 48.789-381 141.093-53.011 69.174-54.195 139.904-54.2 140.61 0 14.013 11.485 25.498 25.6 25.498h819.2c14.115 0 25.6-11.485 25.6-25.6-0.006-0.603-1.189-71.333-54.198-140.507-70.734-92.304-202.483-141.093-381.002-141.093z"></path></svg>
-              <span style="color: #f7a833">Wish List</span>
+              <span style="color: #f7a833">Sign In</span>
             </div>
             <div class="d-flex flex-column align-center"  style=" cursor:pointer"  @click="openCart">
-              <div class="position-relative"> 
+              <v-badge location = "top right" content = "2" offset-x="-16" color="#1083ff">
+                  
+                </v-badge>
+              <div> 
               <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon icon-wishlist d-block" style="width: 35px; fill: #f7a833" >
                 <path class="path1" d="M409.6 1024c-56.464 0-102.4-45.936-102.4-102.4s45.936-102.4 102.4-102.4S512 865.136 512 921.6 466.064 1024 409.6 1024zm0-153.6c-28.232 0-51.2 22.968-51.2 51.2s22.968 51.2 51.2 51.2 51.2-22.968 51.2-51.2-22.968-51.2-51.2-51.2z"></path>
                 <path class="path2" d="M768 1024c-56.464 0-102.4-45.936-102.4-102.4S711.536 819.2 768 819.2s102.4 45.936 102.4 102.4S824.464 1024 768 1024zm0-153.6c-28.232 0-51.2 22.968-51.2 51.2s22.968 51.2 51.2 51.2 51.2-22.968 51.2-51.2-22.968-51.2-51.2-51.2z"></path>
                 <path class="path3" d="M898.021 228.688C885.162 213.507 865.763 204.8 844.8 204.8H217.954l-5.085-30.506C206.149 133.979 168.871 102.4 128 102.4H76.8c-14.138 0-25.6 11.462-25.6 25.6s11.462 25.6 25.6 25.6H128c15.722 0 31.781 13.603 34.366 29.112l85.566 513.395C254.65 736.421 291.929 768 332.799 768h512c14.139 0 25.6-11.461 25.6-25.6s-11.461-25.6-25.6-25.6h-512c-15.722 0-31.781-13.603-34.366-29.11l-12.63-75.784 510.206-44.366c39.69-3.451 75.907-36.938 82.458-76.234l34.366-206.194c3.448-20.677-1.952-41.243-14.813-56.424zm-35.69 48.006l-34.366 206.194c-2.699 16.186-20.043 32.221-36.39 33.645l-514.214 44.714-50.874-305.246h618.314c5.968 0 10.995 2.054 14.155 5.782 3.157 3.73 4.357 9.024 3.376 14.912z"></path></svg>           
-                <v-badge style="position: absolute; top: 1px; right: 5px;">
-                  5
-                </v-badge>
+
               </div>
-       <span style="color: #f7a833">Wish List</span>
+       <span style="color: #f7a833">Cart</span>
             </div>
           </v-col>
-        </v-row>
-        <v-row>
+        </v-row >
+        <v-row class="align-center">
           <v-col cols="7">
             <ul class="d-flex">
-              <li class="px-2" v-for="(link,i) in links" :key="i">{{link}}</li>
+              <li class="pa-2 " v-for="(link,i) in links" :key="i">{{link}}</li>
             </ul>
           </v-col>
-          <v-col cols="5" class="d-flex justify-end" style="gap: 30px;">
+          <v-col cols="5" class="d-flex justify-end align-center" style="gap:40px;">
             <div class="d-flex align-center" style="gap: 10px;">
               <svg style=" width:30px; color:#1083ff;"  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-headset" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-headset fa-w-14 fa-3x"><path fill="currentColor" d="M320 352h-23.1a174.08 174.08 0 0 1-145.8 0H128A128 128 0 0 0 0 480a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32 128 128 0 0 0-128-128zM48 224a16 16 0 0 0 16-16v-16c0-88.22 71.78-160 160-160s160 71.78 160 160v16a80.09 80.09 0 0 1-80 80h-32a32 32 0 0 0-32-32h-32a32 32 0 0 0 0 64h96a112.14 112.14 0 0 0 112-112v-16C416 86.13 329.87 0 224 0S32 86.13 32 192v16a16 16 0 0 0 16 16zm160 0h32a64 64 0 0 1 55.41 32H304a48.05 48.05 0 0 0 48-48v-16a128 128 0 0 0-256 0c0 40.42 19.1 76 48.35 99.47-.06-1.17-.35-2.28-.35-3.47a64.07 64.07 0 0 1 64-64z" class=""></path></svg>
               <span class="text-h7">Help</span>
             </div>
-            <div class="d-flex align-center" style="gap: 10px; cursor: pointer;" id="lang-btn" >
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" style="  width:20px;enable-background:new 0 0 512 512;" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+            <div class="d-flex align-center" style="gap: 7px; cursor: pointer;" id="lang-btn" >
+              <span style="height: 20px;" v-html="selectedLang[0].svg"></span>
+              <span  class="text-h7">{{ selectedLang[0].lang }} / {{ selectedLang[0].currency }}</span>
+              <v-icon>mdi-chevron-down</v-icon>
+              <v-menu activator="#lang-btn">
+                <v-list v-model:selected = "selectedLang">
+                  <v-list-item  v-for="(lang,i) in langs" :key="i" :value="lang">
+                    <v-list-item-title class="d-flex align-center"  style="gap: 10px;">
+                      <div style= "align-self: center;" v-html="lang.svg"></div><div style="height: 30px; align-self: center;">{{ lang.lang }} / {{ lang.currency }}</div>
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-app-bar>
+  </nav>
+</template>
+
+<script>
+export default {
+  
+  data(){
+    return{
+      selectedLang : [{svg:`
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" style="  width:20px;enable-background:new 0 0 512 512;" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
                 <circle style="fill:#F0F0F0;" cx="256" cy="256" r="256"></circle>
                 <g>
                     <path style="fill:#0052B4;" d="M52.92,100.142c-20.109,26.163-35.272,56.318-44.101,89.077h133.178L52.92,100.142z"></path>
@@ -102,30 +128,9 @@
                     <path style="fill:#D80027;" d="M322.783,189.219L322.783,189.219L437.02,74.981c-5.252-5.254-10.743-10.266-16.435-15.047   l-97.802,97.803V189.219z"></path> 
                 </g>
                 </svg>
-              <span class="text-h7">EN / USD</span>
-              <v-icon>mdi-chevron-down</v-icon>
-              <v-menu activator="#lang-btn">
-                <v-list>
-                  <v-list-item>
-                    <v-list-item-title v-for="(lang,i) in langs" :key="i"  class="d-flex align-center" style="gap: 10px;">
-                      <span v-html="lang.svg"></span><span>{{ lang.lang }} / {{ lang.currency }}</span>
-                    </v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-app-bar>
-  </nav>
-</template>
-
-<script>
-export default {
-  
-  data(){
-    return{
+        `,
+        lang:"EN",
+        currency:"USD"}],
       links:["Theme Demo","Shop","Product","New In","Must Have","Collection","Pages","Buy Ella"],
       langs:[
       {
@@ -178,7 +183,7 @@ export default {
 </script>
 
 <style scoped>
-li{
-  list-style: none;
-}
+  li{
+    list-style: none;
+  }
 </style>

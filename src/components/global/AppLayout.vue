@@ -2,23 +2,31 @@
     import AppNav from '@/components/global/AppNav.vue';
     import AppFooter from '@/components/global/AppFooter.vue';
     import CartDrawer from '@/components/global/CartDrawer.vue';
+    import FixedNav from './FixedNav.vue';
+    
     export default{
         components:{
             AppNav,
             AppFooter,
-            CartDrawer
+            CartDrawer,
+            FixedNav
         }
     }
 </script>
 
 <template>
-    <v-layout>
+    <v-layout class="position-relative">
         <CartDrawer/>
         <AppNav/>
-        <v-main>
+        <FixedNav/>
+        <v-main style="padding-top: 150px;">
             <slot></slot>
         </v-main>
 
         <AppFooter/>
     </v-layout>
 </template>
+
+<style scoped>
+
+</style>

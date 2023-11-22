@@ -1,10 +1,27 @@
 <script>
-  // import AppLayout from '@/components/global/AppLayout.vue';
+import UpperBanner from '../components/home_page/UpperBanner.vue';
+import Features from '../components/home_page/Features.vue';
+import TopOffers from '../components/home_page/TopOffers.vue';
+
+
   export default{
     name:"HomeView",
+    components:{
+      UpperBanner,
+      Features,
+      TopOffers
+      
+      
+    }
   }
 </script>
 
 <template>
-    <h1 class="home">this is Home</h1>
+    <UpperBanner/>
+    <Features/>
+    <TopOffers/>
 </template>
+
+<style scoped>
+
+</style>
