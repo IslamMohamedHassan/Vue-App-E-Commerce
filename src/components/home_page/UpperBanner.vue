@@ -1,7 +1,7 @@
 <template>
     <div class="banner">
         <div class="parent">
-            <v-container>
+            <v-container fluid>
                 <v-row class="d-flex justify-start">
                     <v-col cols="6" class="d-flex justify-center" >
                         <div class="text-white banner-info">

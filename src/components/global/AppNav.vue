@@ -3,7 +3,7 @@
     <v-app-bar color="#092999" height="fit-content" absolute>
       <!-- <v-app-bar-nav-icon  @click="openCart"></v-app-bar-nav-icon> -->
       <v-container fluid>
-        <v-row class="align-center">
+        <v-row class="align-center pt-2">
           <v-col cols="3">
             <img src="@/assets/images/logo.png" alt="" />
           </v-col>

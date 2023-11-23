@@ -19,7 +19,7 @@
         <CartDrawer/>
         <AppNav/>
         <FixedNav/>
-        <v-main style="padding-top: 150px;">
+        <v-main style="padding-top: 162px;">
             <slot></slot>
         </v-main>
 
