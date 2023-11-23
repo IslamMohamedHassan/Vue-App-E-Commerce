@@ -25,6 +25,11 @@ import mitt from 'mitt'
 
 const Emitter = mitt()
 
+// swiper
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation';
+
 const app = createApp(App)
 app.use(vuetify).provide("Emitter",Emitter)
 app.use(createPinia())

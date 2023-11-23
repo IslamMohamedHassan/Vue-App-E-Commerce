@@ -1,7 +1,7 @@
 <script>
 import UpperBanner from '../components/home_page/UpperBanner.vue';
-import Features from '../components/home_page/Features.vue';
-import TopOffers from '../components/home_page/TopOffers.vue';
+import Features from '@/components/home_page/Features.vue';
+import TopOffers from '@/components/home_page/TopOffers.vue';
 import FlashProduct from '../components/home_page/FlashProduct.vue';
 import { productModule } from '../stores/products';
 import { mapActions,mapState } from 'pinia';

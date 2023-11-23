@@ -1,86 +1,123 @@
 <template>
-    <div class="flash-deals">
+    <div class="product-swiper">
         <v-container fluid>
-            <v-row>
-                <v-col v-for="(item, i) in product" :key="i" cols="3" sm="6" md="3">
-                    <v-card :loading="loading" class="mx-auto my-12" max-width="374">
-                        <template v-slot:loader="{ isActive }">
-                            <v-progress-linear :active="isActive" color="deep-purple" height="4"
-                                indeterminate></v-progress-linear>
-                        </template>
+            <swiper
+            :pagination="{ e1 :'.swiper-pagination' , clickable : true }"
+            :scrollbar="{el: '.swiper-scrollbar'}"
+            :modules="modules"
+            :allow-touch-move="true"
+            :space-between="35"
+            navigation
+            :slides-per-view="4"
+            :autoplay="{ delay: 2000, disableOnInteraction: true
+             }"
+            class='pb-13'>
 
-                        <v-img cover height="250" :src="item.thumbnail"></v-img>
-
+            <swiper-slide  v-for="(item, i) in product" :key="i" cols="3" sm="6" md="3">
+                 <v-card class="mx-auto my-2" max-width="374">
+                        <v-img cover height="250" :src="(showenItem[item.title]? showenItem[item.title]:item.thumbnail) "></v-img>
                         <v-card-item>
                             <v-card-title>{{ item.title }}</v-card-title>
-
                             <v-card-subtitle>
-                                <span class="me-1">Local Favorite</span>
-
+                                <span class="me-1">{{ item.description }}</span>
                                 <v-icon color="error" icon="mdi-fire-circle" size="small"></v-icon>
                             </v-card-subtitle>
                         </v-card-item>
-
-                        <v-card-text>
+                        <v-card-text class="pb-0">
                             <v-row align="center" class="mx-0">
-                                <v-rating :model-value="4.5" color="amber" density="compact" half-increments readonly
+                                <v-rating :model-value="item.rating" color="amber" density="compact" half-increments readonly
                                     size="small"></v-rating>
 
                                 <div class="text-grey ms-4">
-                                    4.5 (413)
+                                    {{ item.rating }}
                                 </div>
                             </v-row>
 
-                            <div class="my-4 text-subtitle-1">
-                                $ • Italian, Cafe
+                            <div class="my-3 text-subtitle-1">
+                                <del><span>${{ item.price }}</span></del> From <span  style="font-size: 17px;" class="font-weight-bold text-red-darken-2">${{Math.ceil(item.price  -  (item.price * item.discountPercentage / 100)) }}</span>
                             </div>
-
-                            <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio
-                                seating.</div>
                         </v-card-text>
 
-                        <v-divider class="mx-4 mb-1"></v-divider>
-
-                        <v-card-title>Tonight's availability</v-card-title>
-
-                        <div class="px-4">
-                            <v-chip-group v-model="selection">
-                                <v-chip>5:30PM</v-chip>
-
-                                <v-chip>7:30PM</v-chip>
-
-                                <v-chip>8:00PM</v-chip>
-
-                                <v-chip>9:00PM</v-chip>
-                            </v-chip-group>
-                        </div>
-
+                        <v-btn-toggle v-model="showenItem[item.title]">
+                                <v-btn  v-for="(img,i) in item.images" :key="i" :value="img" size="x-small">
+                                        <img  style="border-radius: 50%;border: 1px solid lightgray; width: 35px;height: 35px; cursor: pointer;" :src="img" alt="altImages">
+                                </v-btn>
+                               
+                         </v-btn-toggle >
                         <v-card-actions>
-                            <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
-                                Reserve
+                            <v-btn class="my-3 mx-auto px-7" color="deep-black-lighten-2" rounded="xl" variant="outlined">
+                                Choose Option
                             </v-btn>
                         </v-card-actions>
                     </v-card>
+            </swiper-slide>
 
-                </v-col>
-            </v-row>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-scrollbar"></div> 
+
+            </swiper>
         </v-container>
     </div>
 </template>
 
 <script>
+import {Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import {Navigation,Pagination,Scrollbar,Autoplay } from "swiper";
+
 export default {
     name: "Flash-Product",
+    data(){
+        return{
+            showenItem : {},
+        }
+    },
+    setup(){
+        return{
+            modules: [Navigation, Pagination  ,Scrollbar ,Autoplay],
+        }
+    },
+    components:{
+        Swiper,
+        SwiperSlide
+    },
+    
     props: {
         product: {
             type: Array,
         }
     },
-    mounted() {
-        console.log(this.product);
-    }
+
 }
 
 </script>
+ <style lang="scss">
+ .product-swiper{
+     .swiper-button-prev{
+         border: 2px solid rgb(69, 67, 67);
+         width: 35px;
+         height: 35px;
+         left: 5px;
+         border-radius: 50%;
+         &::after{
+             color:  rgb(69, 67, 67);
+             font-size: 20px !important;
+             font-weight: bold;
 
-<style lang="scss" scoped></style>
+      }
+     }
+     .swiper-button-next{
+         border: 2px solid rgb(69, 67, 67);
+         width: 35px;
+         right: 5px;
+         height: 35px;
+         border-radius: 50%;
+         &::after{
+             color:  rgb(69, 67, 67);
+             font-size: 20px !important;
+             font-weight: bold;
+
+      }
+     }
+ 
+ }
+</style>
