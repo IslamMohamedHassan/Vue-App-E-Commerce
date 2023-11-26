@@ -1,6 +1,9 @@
 <template>
-    <div class="product-swiper">
+    <div class="product-swiper" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
         <v-container fluid>
+            <div class="title mb-10  d-flex align-center justify-space-between">
+                        <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
+            </div>
             <swiper
             :pagination="{ e1 :'.swiper-pagination' , clickable : true }"
             :scrollbar="{el: '.swiper-scrollbar'}"
@@ -9,13 +12,18 @@
             :space-between="35"
             navigation
             :slides-per-view="4"
-            :autoplay="{ delay: 2000, disableOnInteraction: true
-             }"
-            class='pb-13'>
+            :autoplay="{ delay: 2000, disableOnInteraction: false}"
+            :mousewheel="{ enable: true }"
+            class='pb-13'
+            @swiper="onSwiper">
 
             <swiper-slide  v-for="(item, i) in product" :key="i" cols="3" sm="6" md="3">
-                 <v-card class="mx-auto my-2" max-width="374">
-                        <v-img cover height="250" :src="(showenItem[item.title]? showenItem[item.title]:item.thumbnail) "></v-img>
+                 <v-card elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
+                    <v-hover v-slot="{isHovering,props}">   
+                        <div style="height:250px;  overflow:hidden;" >
+                            <v-img v-bind="props" cover  :style="`transition: 1s ease-in-out ;  scale: ${isHovering? 1.05 : 1 }; height:100%;`" :src="(showenItem[item.title]? showenItem[item.title]:item.thumbnail) "></v-img>
+                        </div>
+                    </v-hover> 
                         <v-card-item>
                             <v-card-title>{{ item.title }}</v-card-title>
                             <v-card-subtitle>
@@ -69,6 +77,8 @@ export default {
     data(){
         return{
             showenItem : {},
+            isMouseOverSwiper : false,
+            swiperInstance: null,
         }
     },
     setup(){
@@ -84,9 +94,34 @@ export default {
     props: {
         product: {
             type: Array,
+        },
+        title: {
+            type:String
         }
     },
-
+    methods: {
+    handleMouseEnter() {
+      this.isMouseOverSwiper = true;
+      this.pauseAutoplay();
+    },
+    handleMouseLeave() {
+      this.isMouseOverSwiper = false;
+      this.resumeAutoplay();
+    },
+    onSwiper(swiper) {
+      this.swiperInstance = swiper;
+    },
+    pauseAutoplay() {
+      if (this.swiperInstance) {
+        this.swiperInstance.autoplay.stop();
+      }
+    },
+    resumeAutoplay() {
+      if (this.swiperInstance && !this.swiperInstance.isBeginning) {
+        this.swiperInstance.autoplay.start();
+      }
+    },
+}
 }
 
 </script>
@@ -94,9 +129,11 @@ export default {
  .product-swiper{
      .swiper-button-prev{
          border: 2px solid rgb(69, 67, 67);
-         width: 35px;
-         height: 35px;
+         width: 40px;
+         height: 40px;
          left: 5px;
+         top:52%;
+        //  transform: translate(-50%, -50%);
          border-radius: 50%;
          &::after{
              color:  rgb(69, 67, 67);
@@ -107,9 +144,9 @@ export default {
      }
      .swiper-button-next{
          border: 2px solid rgb(69, 67, 67);
-         width: 35px;
+         width: 40px;
+         height: 40px;
          right: 5px;
-         height: 35px;
          border-radius: 50%;
          &::after{
              color:  rgb(69, 67, 67);

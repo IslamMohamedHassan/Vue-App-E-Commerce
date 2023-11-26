@@ -2,9 +2,12 @@
 import UpperBanner from '../components/home_page/UpperBanner.vue';
 import Features from '@/components/home_page/Features.vue';
 import TopOffers from '@/components/home_page/TopOffers.vue';
-import FlashProduct from '../components/home_page/FlashProduct.vue';
+import Products from '../components/home_page/Products.vue';
+import TopCategories from '../components/home_page/TopCategories.vue';
+import NewProducts from '../components/home_page/NewProducts.vue';
 import { productModule } from '../stores/products';
 import { mapActions,mapState } from 'pinia';
+import QualityFeatures from '../components/home_page/QualityFeatures.vue';
 
 
   export default{
@@ -13,7 +16,10 @@ import { mapActions,mapState } from 'pinia';
       UpperBanner,
       Features,
       TopOffers,
-      FlashProduct
+      Products,
+      TopCategories,
+      NewProducts,
+      QualityFeatures
     },
     data(){
       return{
@@ -21,14 +27,13 @@ import { mapActions,mapState } from 'pinia';
       }
     },
     computed:{
-      ...mapState(productModule,["products"])
+      ...mapState(productModule,["products","laptops","smartPhones","groceries","skinCare"])
     },
     methods:{
       ...mapActions(productModule,["getProducts"])
     },
     async mounted(){
       await this.getProducts();
-      // console.log(this.products);
     }
   }
 </script>
@@ -37,7 +42,27 @@ import { mapActions,mapState } from 'pinia';
     <UpperBanner/>
     <Features/>
     <TopOffers/>
-    <FlashProduct :product = products />
+    <Products :product = products title = "Flash Product"/>
+    <TopCategories/>
+    <NewProducts :product = laptops title = "New Product"/>
+    <QualityFeatures/>
+    <Products :product = smartPhones title = "Top Mobile Phones"/>
+    <v-container fluid>
+      <v-row>
+        <v-col cols="6">
+          <img class="w-100 pr-4" src="@/assets/images/band-left-cover.webp" alt="banner">
+        </v-col>
+        <v-col cols="6">
+          <img class="w-100 pl-4" src="@/assets/images/band-right-cover.webp" alt="banner">
+        </v-col>
+      </v-row>
+    </v-container>
+    <Products :product = groceries title = "Groceries"/>
+    <img class="w-100" src="@/assets/images/tv-banner.webp" alt="bannerImg">
+    <Products :product = skinCare title = "Skin Care"/>
+
+
+
 </template>
 
 <style scoped>
