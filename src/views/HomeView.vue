@@ -8,6 +8,7 @@ import NewProducts from '../components/home_page/NewProducts.vue';
 import { productModule } from '../stores/products';
 import { mapActions,mapState } from 'pinia';
 import QualityFeatures from '../components/home_page/QualityFeatures.vue';
+import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
 
 
   export default{
@@ -19,7 +20,9 @@ import QualityFeatures from '../components/home_page/QualityFeatures.vue';
       Products,
       TopCategories,
       NewProducts,
-      QualityFeatures
+      QualityFeatures,
+      WhyShopWithUs
+
     },
     data(){
       return{
@@ -60,6 +63,7 @@ import QualityFeatures from '../components/home_page/QualityFeatures.vue';
     <Products :product = groceries title = "Groceries"/>
     <img class="w-100" src="@/assets/images/tv-banner.webp" alt="bannerImg">
     <Products :product = skinCare title = "Skin Care"/>
+    <WhyShopWithUs />
 
 
 

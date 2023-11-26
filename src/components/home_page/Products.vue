@@ -4,6 +4,11 @@
             <div class="title mb-10  d-flex align-center justify-space-between">
                         <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
             </div>
+            <v-row>
+                <v-col cols="3" sm="6" md="3"  class="px-12 py-7  my-2" v-for="num in 4" :key="num" max-width="374" height="250" v-if="!product.length">
+                    <VSkeletonLoader  type="image, article, paragraph, button"></VSkeletonLoader>
+                </v-col>
+            </v-row>
             <swiper
             :pagination="{ e1 :'.swiper-pagination' , clickable : true }"
             :scrollbar="{el: '.swiper-scrollbar'}"
@@ -71,6 +76,8 @@
 <script>
 import {Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import {Navigation,Pagination,Scrollbar,Autoplay } from "swiper";
+import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
+
 
 export default {
     name: "Flash-Product",
@@ -88,7 +95,8 @@ export default {
     },
     components:{
         Swiper,
-        SwiperSlide
+        SwiperSlide,
+        VSkeletonLoader
     },
     
     props: {

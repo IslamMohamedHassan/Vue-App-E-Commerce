@@ -22,7 +22,6 @@
         <v-main style="padding-top: 162px;">
             <slot></slot>
         </v-main>
-
         <AppFooter/>
     </v-layout>
 </template>

@@ -1,10 +1,14 @@
 <template>
     <div class="new-products pt-12">
         <v-container fluid >
+ 
             <v-row class="px-8">
                 <v-col cols="7">
                     <div class="title mb-10  d-flex align-center justify-space-between">
                         <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
+                    </div>
+                    <div class="d-flex ga-1" v-if="!product.length">
+                        <VSkeletonLoader style="width: 30%;"  v-for="num in 3" :key="num"  type="image, article, paragraph, button"></VSkeletonLoader>
                     </div>
                     <swiper :pagination="{ e1: '.swiper-pagination', clickable: true }"
                         :scrollbar="{ el: '.swiper-scrollbar' }" :modules="modules" :allow-touch-move="true"
@@ -66,7 +70,7 @@
                     </swiper>
                 </v-col>
                 <v-col cols="5">
-                    <img style="width: 100%;" src="../../assets/images/vr-banner.webp" alt="vr-image">
+                    <img style="width: 100%; height: 700px;" src="../../assets/images/vr-banner.webp" alt="vr-image">
                 </v-col>
             </v-row>
 
@@ -77,6 +81,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import { Pagination, Scrollbar, Autoplay } from "swiper";
+import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
 
 export default {
     name: "Flash-Product",
@@ -94,7 +99,8 @@ export default {
     },
     components: {
         Swiper,
-        SwiperSlide
+        SwiperSlide,
+        VSkeletonLoader
     },
 
     props: {
