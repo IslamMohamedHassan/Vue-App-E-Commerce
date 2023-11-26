@@ -1,7 +1,7 @@
 <template>
     <div class="product-swiper" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
         <v-container fluid>
-            <div class="title mb-10  d-flex align-center justify-space-between">
+            <div class="title mb-10 py-10  d-flex align-center justify-space-between">
                         <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
             </div>
             <v-row>

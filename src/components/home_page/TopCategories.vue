@@ -1,11 +1,11 @@
 <template>
-    <div class="top-cate">
+    <div class="top-cate py-10">
         <div class="cyber-banner">
             <img class="w-100" src="../../assets/images/cyber-banner.webp" alt="banner">
         </div>
         
         <div class="categories pt-10">
-            <div class="title d-flex justify-center align-center px-5 mb-3">
+            <div class="title d-flex justify-center align-center px-5 my-5">
                 <h3 class="text-center font-weight-bold text-h4 flex-grow-1">
                     Top Categories
                 </h3>
@@ -16,7 +16,7 @@
                     <v-col cols="2" v-for="(item,i) in categories" :key="i">
                         <v-card class="text-center pa-4" elevation="0">
                             <v-hover v-slot="{isHovering,props}">
-                                <div v-bind="props" style="overflow: hidden; height: 200px; width: 100%; border-radius:50%">
+                                <div v-bind="props" style="overflow: hidden; height: 100%; width: 100%; border-radius:50%">
                                     <img :style="`transition: 0.5s ease-in-out ;  scale: ${isHovering? 1.05 : 1 }; height:100%; width:100%; cursor:pointer`" :src="item.img" :alt="item.title" />
                                 </div>
                             </v-hover>

@@ -1,5 +1,5 @@
 <template>
-    <div class="top-offers bg-grey-lighten-3">
+    <div class="top-offers bg-grey-lighten-3 py-10">
         <v-container fluid>
             <v-row>
                 <v-col cols="4" class="blue-grey-lighten-3">

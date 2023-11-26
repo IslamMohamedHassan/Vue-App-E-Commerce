@@ -1,5 +1,5 @@
 <template>
-    <div class="new-products pt-12">
+    <div class="new-products py-12">
         <v-container fluid >
  
             <v-row class="px-8">

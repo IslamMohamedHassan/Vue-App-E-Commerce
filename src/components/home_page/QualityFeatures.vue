@@ -4,16 +4,16 @@
             <v-row>
                 <v-col v-for="(card, i) in cards" :key="i">
                     <v-hover v-slot="{ isHovering, props }">
-                        <v-card v-bind="props" class="text-center d-flex align-center justify-center" height="350"
+                        <v-card v-bind="props" class="text-center d-flex align-center justify-center px-10" height="400"
                             :elevation="isHovering ? 15 : 0" 
                             :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`"
                             >
                             <div>
                                 <span  v-html="card.svg"></span>
-                                <v-card-title style="font-weight: 700; text-transform: uppercase;font-size: 16px;">
+                                <v-card-title style="font-weight: 700; text-transform: uppercase;font-size: 20px;">
                                     {{ card.title }}
                                 </v-card-title>
-                                <v-card-text>{{ card.text }}</v-card-text>
+                                <v-card-text style="font-size: 18px;">{{ card.text }}</v-card-text>
                             </div>
                         </v-card>
                     </v-hover>

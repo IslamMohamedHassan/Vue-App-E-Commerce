@@ -1,10 +1,10 @@
 <template>
-    <div class="why-shop-with-us  text-white">
+    <div class="why-shop-with-us text-white py-10">
         <v-container>
             <div>
                 <h2><span>Why shop</span> with us </h2>
             </div>
-            <v-row class="py-7">
+            <v-row class="pb-5 pt-12">
             <v-hover v-slot="{isHovering,props}">
             <v-col cols="3" v-bind="props">
                 <div :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`">

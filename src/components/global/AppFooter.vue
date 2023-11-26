@@ -70,7 +70,7 @@
 
                                 </div>
                                 <div class="mt-5 d-flex" style="gap: 10px;">
-                                    <svg fill="#444" style="color: #444; width: 25px;" aria-hidden="true" focusable="false"
+                                    <svg fill="#444" style="color: #444; width:25px;" aria-hidden="true" focusable="false"
                                         data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
                                         class="align-self-start pt-2 svg-inline--fa fa-envelope fa-w-16 fa-7x">
@@ -80,9 +80,9 @@
                                     </svg>
                                     <span class="">example@domain.com</span>
                                 </div>
-                                <div class="mt-5 d-flex">
-                                    <ul class="icons d-flex flex-row align-center" style="gap: 25px;" role="list">
-                                        <li class="list-social__item d-flex align-center">
+                                <!-- <div class="mt-5 d-flex flex-row flex-wrap">
+                                    <ul class="icons d-flex flex-row align-center" style="gap:25px;" role="list">
+                                        <li class="list-social__item">
                                             <a href="#">
                                                 <svg fill="#fff" style="color: white; width: 20px;" aria-hidden="true"
                                                     focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                             <p>© 2023 Ella Demo. All Rights Reserved. Powered By Shopify.</p>
                         </div>
                     </v-col>
-                    <v-col cols="6"  class="">
+                    <v-col cols="6" class="">
                         <ul class="" role="list">
                             <li class="list-payment__item visa">
                                 <svg class="icon icon--full-color" viewBox="0 0 38 24"
@@ -342,6 +342,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>.footer {
+    overflow: hidden;
     .down {
         ul {
             list-style: none;
