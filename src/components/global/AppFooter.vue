@@ -1,10 +1,10 @@
 <template>
-    <v-footer absolute :app="true" class="footer d-flex flex-column">
+    <v-footer absolute :app="true" class="footer d-flex flex-column pa-0">
         <div class="top w-100">
-            <v-container>
+            <v-container fluid class="pa-0">
                 <v-row class="py-10">
-                    <v-col cols="3">
-                        <div class="footer-col d-flex flex-column align-center">
+                    <v-col cols="12" sm="6" md="3" lg="3" class="ml-4 ml-sm-0">
+                        <div class="footer-col d-flex flex-column align-start align-md-center px-3">
                             <ul>
                                 <h3>SHOP</h3>
                                 <li><a href="#">Electronics</a></li>
@@ -17,8 +17,8 @@
                             </ul>
                         </div>
                     </v-col>
-                    <v-col cols="3">
-                        <div class="footer-col d-flex flex-column align-center">
+                    <v-col cols="12" sm="6" md="3" lg="3" class="ml-4 ml-sm-0">
+                        <div class="footer-col d-flex flex-column align-start align-md-center px-3">
                             <ul>
                                 <h3>FURTHER INFO.</h3>
                                 <li><a href="#">About</a></li>
@@ -31,8 +31,8 @@
                             </ul>
                         </div>
                     </v-col>
-                    <v-col cols="3">
-                        <div class="footer-col d-flex flex-column align-center">
+                    <v-col cols="12" sm="6" md="3" lg="3" class="ml-4 ml-sm-0">
+                        <div class="footer-col d-flex flex-column align-start align-md-center px-3">
                             <ul>
                                 <h3>CUSTOMER SERVICE</h3>
                                 <li><a href="#">Search Terms</a></li>
@@ -45,9 +45,9 @@
                             </ul>
                         </div>
                     </v-col>
-                    <v-col cols="3">
-                        <div class="footer-col d-flex flex-column align-center w-100">
-                            <div class="last-col w-100">
+                    <v-col cols="12" sm="6" md="3" lg="3" class="footer-col d-flex flex-column align-start align-md-center ml-4 ml-sm-0  px-3">
+                        <div class="pr-4">
+                            <div class="last-col  w-100">
                                 <img src="@\assets\images\footer-logo.webp" alt="footer-logo">
                                 <div class="mt-5 d-flex" style="gap: 10px;">
                                     <svg fill="#444" class="align-self-start pt-2" style="color: #444; width: 17px;"
@@ -152,15 +152,15 @@
         </div>
         <div class="down w-100">
             <v-container>
-                <v-row class="d-flex align-center">
-                    <v-col cols="6">
-                        <div class="" style="margin-left:12.5%; font-size:20px; color: #808080">
+                <v-row class="flex-column flex-lg-row align-center justify-center flex-wrap justify-lg-space-around">
+                    <v-col cols="12" lg="6" class="order-2 order-sm-1 order-lg-0">
+                        <div class="w-100" style="font-size:20px; color: #808080">
                             <p>© 2023 Ella Demo. All Rights Reserved. Powered By Shopify.</p>
                         </div>
                     </v-col>
-                    <v-col cols="6" class="">
-                        <ul class="" role="list">
-                            <li class="list-payment__item visa">
+                    <v-col cols="12"  lg="6" class="order-1 order-sm-0 order-lg-1">
+                        <ul class="w-100 d-flex " role="list">
+                            <li >
                                 <svg class="icon icon--full-color" viewBox="0 0 38 24"
                                     xmlns="http://www.w3.org/2000/svg" role="img"  width="100" height="50"
                                     aria-labelledby="pi-visa">
@@ -175,7 +175,7 @@
                                         d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
                                         fill="#142688"></path>
                                 </svg></li>
-                            <li class="list-payment__item master">
+                            <li >
                                 <svg class="icon icon--full-color" viewBox="0 0 38 24"
                                     xmlns="http://www.w3.org/2000/svg" role="img"  width="100" height="50"
                                     aria-labelledby="pi-master">
@@ -192,7 +192,7 @@
                                         d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z">
                                     </path>
                                 </svg></li>
-                            <li class="list-payment__item american_express">
+                            <li >
                                 <svg class="icon icon--full-color"
                                     xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24"  width="100" height="50"
                                     aria-labelledby="pi-american_express">
@@ -210,7 +210,7 @@
                                     </g>
                                 </svg>
                             </li>
-                            <li class="list-payment__item apple_pay">
+                            <li >
                                 <svg class="icon icon--full-color" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0"  width="100" height="50"
                                     viewBox="0 0 165.521 105.965" xml:space="preserve" aria-labelledby="pi-apple_pay">
@@ -244,7 +244,7 @@
                                     </g>
                                 </svg>
                             </li>
-                            <li class="list-payment__item discover">
+                            <li >
                                 <svg class="icon icon--full-color" viewBox="0 0 38 24"
                                      width="100" height="50" role="img" aria-labelledby="pi-discover" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -288,7 +288,7 @@
                                     </linearGradient>
                                 </defs>
                             </svg></li>
-                        <li class="list-payment__item paypal">
+                        <li >
                             <svg class="icon icon--full-color" viewBox="0 0 38 24"
                                 xmlns="http://www.w3.org/2000/svg"  width="100" height="50" role="img"
                                 aria-labelledby="pi-paypal">
@@ -309,7 +309,7 @@
                                     d="M23.3 8.1c-.1-.1-.2-.1-.3-.1-.1 0-.2 0-.3-.1-.3-.1-.7-.1-1.1-.1h-3c-.1 0-.2 0-.2.1-.2.1-.3.2-.3.4l-.7 4.4v.1c0-.3.3-.5.6-.5h1.3c2.5 0 4.1-1 4.6-3.8v-.2c-.1-.1-.3-.2-.5-.2h-.1z">
                                 </path>
                             </svg></li>
-                        <li class="list-payment__item shopify_pay">
+                        <li >
                             <svg  class="icon icon--full-color"
                                 xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="100" height="50"
                                 aria-labelledby="pi-shopify_pay">
@@ -347,8 +347,6 @@ export default {
         ul {
             list-style: none;
             display: flex;
-            justify-content: flex-end;
-            margin-right: 12.5% ;
             gap: 20px;
 
             li {
@@ -361,6 +359,7 @@ export default {
 
     .top {
         background-color: #f5f5f5;
+        widows: 100%;
 
         ul {
             display: flex;
@@ -369,17 +368,17 @@ export default {
             list-style: none;
 
             h3 {
-                font-size: 28px;
+                font-size: 24px;
                 color: black;
                 font-weight: bolder;
             }
 
             li {
-                padding: 10px 0;
+                padding: 5px 0;
 
                 a {
                     color: rgb(64, 64, 64);
-                    font-size: 20px;
+                    font-size: 16px;
                     text-decoration: none;
 
                     &:hover {

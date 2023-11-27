@@ -4,9 +4,9 @@
             <div>
                 <h2><span>Why shop</span> with us </h2>
             </div>
-            <v-row class="pb-5 pt-12">
+            <v-row class="pb-5 pt-12  justify-md-center">
             <v-hover v-slot="{isHovering,props}">
-            <v-col cols="3" v-bind="props">
+            <v-col cols="12" sm="6" md="4" lg="3" v-bind="props">
                 <div :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`">
                 <div class="img-parent">
                     <img src="@\assets\images\free-shipping.png" alt="free-shipping">
@@ -20,7 +20,7 @@
             </v-col>
          </v-hover>
          <v-hover v-slot="{isHovering,props}">
-            <v-col cols="3" v-bind="props">
+            <v-col cols="12" sm="6" md="4" lg="3" v-bind="props">
                 <div :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`">
                 <div class="img-parent">
                     <img src="@\assets\images\weekly-flash-sales.png" alt="free-shipping">
@@ -35,7 +35,7 @@
             </v-hover>
 
              <v-hover v-slot="{isHovering,props}">
-            <v-col cols="3" v-bind="props">
+            <v-col cols="12" sm="6" md="4" lg="3" v-bind="props">
                 <div :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`">
                 <div class="img-parent">
                     <img src="@\assets\images\discount.png" alt="free-shipping">
@@ -49,7 +49,7 @@
             </v-col>
             </v-hover>
             <v-hover v-slot="{isHovering,props}">
-            <v-col cols="3" v-bind="props">
+            <v-col cols="12" sm="6" md="4" lg="3" v-bind="props">
                 <div :style="`transition: 0.3s ease-in-out ;  transform: translateY(${isHovering ? '-15px' : '0px'});`">
                 <div class="img-parent">
                     <img src="@\assets\images\cash-back.png" alt="free-shipping">

@@ -53,15 +53,15 @@ import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
     <v-container fluid>
       <v-row>
         <v-col cols="6">
-          <img class="w-100 pr-4" src="@/assets/images/band-left-cover.webp" alt="banner">
+          <img class="layout-img w-100 pr-4" src="@/assets/images/band-left-cover.webp" alt="banner">
         </v-col>
         <v-col cols="6">
-          <img class="w-100 pl-4" src="@/assets/images/band-right-cover.webp" alt="banner">
+          <img class="layout-img w-100 pl-4" src="@/assets/images/band-right-cover.webp" alt="banner">
         </v-col>
       </v-row>
     </v-container>
     <Products :product = groceries title = "Groceries"/>
-    <img class="w-100" src="@/assets/images/tv-banner.webp" alt="bannerImg">
+    <img class="layout-img w-100" src="@/assets/images/tv-banner.webp" alt="bannerImg">
     <Products :product = skinCare title = "Skin Care"/>
     <WhyShopWithUs />
 
@@ -70,5 +70,11 @@ import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
 </template>
 
 <style scoped>
-
+    @media(max-width: 900px){
+      .layout-img{
+        display: block;
+        height: 200px !important;
+        padding: 0px !important;
+      }
+      }
 </style>

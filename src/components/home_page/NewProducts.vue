@@ -3,7 +3,7 @@
         <v-container fluid >
  
             <v-row class="px-8">
-                <v-col cols="7">
+                <v-col cols="12" md="7" class="order-1 order-md-0">
                     <div class="title mb-10  d-flex align-center justify-space-between">
                         <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
                     </div>
@@ -13,7 +13,8 @@
                     <swiper :pagination="{ e1: '.swiper-pagination', clickable: true }"
                         :scrollbar="{ el: '.swiper-scrollbar' }" :modules="modules" :allow-touch-move="true"
                         :space-between="20" :slides-per-view="3" 
-                        :mousewheel="{ enable: true }" class='pb-13'>
+                        :mousewheel="{ enable: true }" class='pb-13'
+                        :breakpoints="breakPoints">
 
                         <swiper-slide v-for="(item, i) in product" :key="i">
                             <v-card elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
@@ -69,8 +70,8 @@
 
                     </swiper>
                 </v-col>
-                <v-col cols="5">
-                    <img style="width: 100%; height: 700px;" src="../../assets/images/vr-banner.webp" alt="vr-image">
+                <v-col cols="12" md="5" >
+                    <img class="d-none d-sm-block" style="width: 100%; height: 700px;" src="../../assets/images/vr-banner.webp" alt="vr-image">
                 </v-col>
             </v-row>
 
@@ -90,6 +91,20 @@ export default {
             showenItem: {},
             isMouseOverSwiper: false,
             swiperInstance: null,
+            breakPoints:{
+                0:{
+                    slidesPerView : 1,
+                },
+                580:{
+                    slidesPerView : 1,
+                },
+                767:{
+                    slidesPerView : 2,
+                },
+                1300:{
+                    slidesPerView : 3,
+                }
+            }
         }
     },
     setup() {
@@ -116,4 +131,6 @@ export default {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

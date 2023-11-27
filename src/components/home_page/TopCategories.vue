@@ -1,7 +1,7 @@
 <template>
     <div class="top-cate py-10">
         <div class="cyber-banner">
-            <img class="w-100" src="../../assets/images/cyber-banner.webp" alt="banner">
+            <img class="layout-img w-100" src="../../assets/images/cyber-banner.webp" alt="banner">
         </div>
         
         <div class="categories pt-10">
@@ -13,7 +13,7 @@
             </div>
             <v-container fluid>
                 <v-row>
-                    <v-col cols="2" v-for="(item,i) in categories" :key="i">
+                    <v-col cols="6" sm="4" md="3" lg="2" v-for="(item,i) in categories" :key="i">
                         <v-card class="text-center pa-4" elevation="0">
                             <v-hover v-slot="{isHovering,props}">
                                 <div v-bind="props" style="overflow: hidden; height: 100%; width: 100%; border-radius:50%">
@@ -90,5 +90,10 @@
 </script>
 
 <style lang="scss" scoped>
-
+    @media(max-width: 900px){
+      .layout-img{
+        display: block;
+        height: 200px !important;
+      }
+      }
 </style>

@@ -5,7 +5,7 @@
                         <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
             </div>
             <v-row>
-                <v-col cols="3" sm="6" md="3"  class="px-12 py-7  my-2" v-for="num in 4" :key="num" max-width="374" height="250" v-if="!product.length">
+                <v-col cols="12" sm="6" md="4"  class="px-12 py-7  my-2" v-for="num in 4" :key="num" max-width="374" height="250" v-if="!product.length">
                     <VSkeletonLoader  type="image, article, paragraph, button"></VSkeletonLoader>
                 </v-col>
             </v-row>
@@ -19,6 +19,7 @@
             :slides-per-view="4"
             :autoplay="{ delay: 2000, disableOnInteraction: false}"
             :mousewheel="{ enable: true }"
+            :breakpoints="breakPoints"
             class='pb-13'
             @swiper="onSwiper">
 
@@ -86,6 +87,20 @@ export default {
             showenItem : {},
             isMouseOverSwiper : false,
             swiperInstance: null,
+            breakPoints:{
+                0:{
+                    slidesPerView : 1,
+                },
+                580:{
+                    slidesPerView : 2,
+                },
+                767:{
+                    slidesPerView : 3,
+                },
+                990:{
+                    slidesPerView : 4,
+                }
+            }
         }
     },
     setup(){
@@ -129,9 +144,9 @@ export default {
         this.swiperInstance.autoplay.start();
       }
     },
-}
-}
+},
 
+}
 </script>
  <style lang="scss">
  .product-swiper{
@@ -164,5 +179,16 @@ export default {
       }
      }
  
+ }
+ @media(max-width: 600px){
+    .product-swiper{
+     .swiper-button-prev{
+        display: none;
+     }
+     .swiper-button-next{
+        display: none;
+     }
+ 
+ }
  }
 </style>
