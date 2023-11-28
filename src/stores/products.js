@@ -31,10 +31,6 @@ export const productModule = defineStore('productModule', {
         route:"mens-watches"
       },
       {
-        title:"women's Watches",
-        route:"womens-watches"
-      },
-      {
         title:"Sun glasses",
         route:"sunglasses"
       },
@@ -63,9 +59,10 @@ export const productModule = defineStore('productModule', {
         .get(`https://dummyjson.com/products/category/${category}`)
         .then((res) => {
           return(
-            console.log(res)
+            this.productsOfCategory = res.data.products
           )
         })
+        .catch(err=>console.log(err))
     
   }
 }

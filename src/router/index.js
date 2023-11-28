@@ -14,7 +14,10 @@ const router = createRouter({
       name: 'category-page',
       component:() => import('../views/ProductCategory.vue')
     },
-  ]
+  ],
+  scrollBehavior(){
+    return{top : 0}
+  }
 })
 
 export default router

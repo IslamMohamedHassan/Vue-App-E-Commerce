@@ -7,13 +7,9 @@
                         <div class="footer-col d-flex flex-column align-start align-md-center px-3">
                             <ul>
                                 <h3>SHOP</h3>
-                                <li><a href="#">Electronics</a></li>
-                                <li><a href="#">Computers & Laptops</a></li>
-                                <li><a href="#">Smartphones & Tablets</a></li>
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Video Games & Systems</a></li>
-                                <li><a href="#">Home Furniture</a></li>
-                                <li><a href="#">Weekly Special</a></li>
+                                <li class="" v-for="(link,i) in category" :key="i">
+                                    <RouterLink style="text-decoration: none; " :to="{name:'category-page',params:{category:link.route}}">{{link.title}}</RouterLink> 
+                                </li>
                             </ul>
                         </div>
                     </v-col>
@@ -48,7 +44,7 @@
                     <v-col cols="12" sm="6" md="3" lg="3" class="footer-col d-flex flex-column align-start align-md-center ml-4 ml-sm-0  px-3">
                         <div class="pr-4">
                             <div class="last-col  w-100">
-                                <img src="@\assets\images\footer-logo.webp" alt="footer-logo">
+                                <img style="cursor: pointer;" @click="$router.push({name:'home'})" src="@\assets\images\footer-logo.webp" alt="footer-logo">
                                 <div class="mt-5 d-flex" style="gap: 10px;">
                                     <svg fill="#444" class="align-self-start pt-2" style="color: #444; width: 17px;"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -336,8 +332,21 @@
 
 
 <script>
-export default {
+import { mapState } from 'pinia'
+import { productModule } from '../../stores/products'
 
+export default {
+    data() {
+        return {
+            category: [],
+            }
+    },
+    computed:{
+    ...mapState(productModule,['categories'])
+  },
+    mounted(){
+    this.category = this.categories
+  },
 }
 </script>
 
@@ -375,15 +384,13 @@ export default {
 
             li {
                 padding: 5px 0;
-
+                &:hover {
+                        text-decoration: underline;
+                    }
                 a {
                     color: rgb(64, 64, 64);
                     font-size: 16px;
-                    text-decoration: none;
-
-                    &:hover {
-                        text-decoration: underline;
-                    }
+                    text-decoration: none
                 }
 
             }

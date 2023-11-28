@@ -1,19 +1,25 @@
 <template>
+    <nav>
     <v-app-bar color="#092999" height="fit-content">
         <v-container fluid>
             <v-row class="align-center">
-                <v-col cols="3">
-                    <img src="@/assets/images/logo.png" alt="" />
+                <v-col cols="2">
+                    <img style="cursor: pointer;" @click="$router.push({name:'home'})" src="@/assets/images/logo.png" alt="" />
                 </v-col>
-                <v-col cols="5">
-                    <ul class="d-flex">
-                        <li class="pa-2 " v-for="(link, i) in links" :key="i">{{ link }}</li>
+                <v-col cols="9">
+
+                    <ul class="d-flex justify-center">
+                        <li class="pa-2 " v-for="(link, i) in category" :key="i">
+                            <RouterLink style="text-decoration: none; "
+                                :to="{ name: 'category-page', params: { category: link.route } }">{{ link.title }}</RouterLink>
+                        </li>
                     </ul>
                 </v-col>
-                <v-col cols="4 d-flex justify-end">
+                <v-col cols="1" class="d-flex justify-end ms-auto">
                     <div>
-                        <v-icon  style="font-size: 40px; cursor: pointer;" color="#f7a833" >mdi-magnify</v-icon></div>
-                        
+                        <v-icon style="font-size: 40px; cursor: pointer;" color="#f7a833">mdi-magnify</v-icon>
+                    </div>
+
                     <div class="d-flex flex-column align-center" style=" cursor:pointer" @click="openCart">
                         <v-badge location="top right" content="2" offset-x="-16" color="#1083ff">
                         </v-badge>
@@ -37,29 +43,38 @@
             </v-row>
         </v-container>
     </v-app-bar>
+</nav>
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import { productModule } from '../../stores/products'
+
 export default {
-    name:"FixedNav",
+    name: "FixedNav",
     data() {
-
-
         return {
-            links: ["Theme Demo", "Shop", "Product", "New In", "Must Have", "Collection", "Pages", "Buy Ella"],
-        }
+            category: [],
+            }
     },
+    computed:{
+    ...mapState(productModule,['categories'])
+  },
     inject: ['Emitter'],
     methods: {
         openCart() {
             this.Emitter.emit('openCart')
         }
-    }
+    },
+    mounted(){
+    this.category = this.categories
+  },
+
 }
 </script>
 
 <style lang="scss" scoped>
-    li{
+li {
     list-style: none;
-    }
+}
 </style>

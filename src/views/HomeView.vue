@@ -68,7 +68,7 @@ import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
 
 
 </template>
-
+  
 <style scoped>
     @media(max-width: 900px){
       .layout-img{

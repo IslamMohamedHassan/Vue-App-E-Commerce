@@ -5,7 +5,7 @@
       <v-container fluid>
         <v-row class="align-center pt-2">
           <v-col cols="3">
-            <img src="@/assets/images/logo.png" alt="" />
+            <img style="cursor: pointer;" @click="$router.push({name:'home'})" src="@/assets/images/logo.png" alt="" />
           </v-col>
           <v-col cols="5">
             <div style="position: relative; width: 85%">
@@ -71,12 +71,14 @@
           </v-col>
         </v-row >
         <v-row class="align-center">
-          <v-col cols="7">
+          <v-col cols="8">
             <ul class="d-flex">
-              <li class="pa-2 " v-for="(link,i) in links" :key="i">{{link}}</li>
+              <li class="pa-2" v-for="(link,i) in category" :key="i">
+                  <RouterLink style="text-decoration: none; " :to="{name:'category-page',params:{category:link.route}}">{{link.title}}</RouterLink> 
+              </li>
             </ul>
           </v-col>
-          <v-col cols="5" class="d-flex justify-end align-center" style="gap:40px;">
+          <v-col cols="4" class="d-flex justify-end align-center" style="gap:40px;">
             <div class="d-flex align-center" style="gap: 10px;">
               <svg style=" width:30px; color:#1083ff;"  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-headset" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-headset fa-w-14 fa-3x"><path fill="currentColor" d="M320 352h-23.1a174.08 174.08 0 0 1-145.8 0H128A128 128 0 0 0 0 480a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32 128 128 0 0 0-128-128zM48 224a16 16 0 0 0 16-16v-16c0-88.22 71.78-160 160-160s160 71.78 160 160v16a80.09 80.09 0 0 1-80 80h-32a32 32 0 0 0-32-32h-32a32 32 0 0 0 0 64h96a112.14 112.14 0 0 0 112-112v-16C416 86.13 329.87 0 224 0S32 86.13 32 192v16a16 16 0 0 0 16 16zm160 0h32a64 64 0 0 1 55.41 32H304a48.05 48.05 0 0 0 48-48v-16a128 128 0 0 0-256 0c0 40.42 19.1 76 48.35 99.47-.06-1.17-.35-2.28-.35-3.47a64.07 64.07 0 0 1 64-64z" class=""></path></svg>
               <span class="text-h7">Help</span>
@@ -103,6 +105,12 @@
 </template>
 
 <script>
+import { mapState } from 'pinia';
+import { productModule } from '../../stores/products';
+import { RouterLink } from 'vue-router';
+
+
+
 export default {
   
   data(){
@@ -169,8 +177,15 @@ export default {
         lang:"DE",
         currency:"EURO"
       },
-    ]
+    ],
+    category: [],
     }
+  },
+  computed:{
+    ...mapState(productModule,['categories'])
+  },
+  mounted(){
+    this.category = this.categories
   },
 
   inject: ['Emitter'],
