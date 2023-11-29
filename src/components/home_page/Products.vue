@@ -2,7 +2,7 @@
     <div class="product-swiper" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
         <v-container fluid>
             <div class="title mb-10 py-10  d-flex align-center justify-space-between">
-                        <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
+                <h2 style="font-weight: 900; font-size: 30px;">{{ title }}</h2>
             </div>
             <v-row>
                 <v-col cols="12" sm="6" md="4"  class="px-12 py-7  my-2" v-for="num in 4" :key="num" max-width="374" height="250" v-if="!product.length">
@@ -24,7 +24,7 @@
             @swiper="onSwiper">
 
             <swiper-slide  v-for="(item, i) in product" :key="i" cols="3" sm="6" md="3">
-                 <v-card elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
+                 <v-card @click="$router.push(`product/${item.id}`)"  elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
                     <v-hover v-slot="{isHovering,props}">   
                         <div style="height:250px;  overflow:hidden;" >
                             <v-img v-bind="props" cover  :style="`transition: 1s ease-in-out ;  scale: ${isHovering? 1.05 : 1 }; height:100%;`" :src="(showenItem[item.title]? showenItem[item.title]:item.thumbnail) "></v-img>

@@ -17,7 +17,7 @@
                         :breakpoints="breakPoints">
 
                         <swiper-slide v-for="(item, i) in product" :key="i">
-                            <v-card elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
+                            <v-card  @click="$router.replace(`./product/${item.id}`)" elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
                                 <v-hover v-slot="{ isHovering, props }">
                                     <div style="height:250px;  overflow:hidden;">
                                         <v-img v-bind="props" cover

@@ -9,6 +9,7 @@ export const productModule = defineStore('productModule', {
     groceries:[],
     skinCare:[],
     productsOfCategory:[],
+    specificProduct:{},
     categories:[
       {
         title:"Smart phones",
@@ -64,6 +65,17 @@ export const productModule = defineStore('productModule', {
         })
         .catch(err=>console.log(err))
     
-  }
+  },
+  async getSpecificProduct(id) {
+    await axios
+      .get(`https://dummyjson.com/products/${id}`)
+      .then((res) => {
+        return(
+          this.specificProduct = res.data
+        )
+      })
+      .catch(err=>console.log(err))
+  
+}
 }
 })

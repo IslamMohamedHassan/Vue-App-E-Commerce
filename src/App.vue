@@ -32,6 +32,12 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media (max-width: 1000px) {
   nav a {
     /* font-size: 14px; */

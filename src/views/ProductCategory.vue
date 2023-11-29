@@ -10,7 +10,7 @@
             </v-row>
             <v-row v-if="!loading" class="product-category-page-row">
                 <v-col v-for="(item, i) in productsOfCategory" :key="i" cols="12" sm="6" md="4" lg="3">
-                 <v-card elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
+                 <v-card  @click="$router.push(`/product/${item.id}`)" elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
                     <v-hover v-slot="{isHovering,props}">   
                         <div style="height:250px;  overflow:hidden;" >
                             <v-img v-bind="props" cover  :style="`transition: 1s ease-in-out ;  scale: ${isHovering? 1.05 : 1 }; height:100%;`" :src="(showenItem[item.title]? showenItem[item.title]:item.thumbnail) "></v-img>
