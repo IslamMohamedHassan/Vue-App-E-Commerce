@@ -23,7 +23,6 @@
         this.windowWidth = window.innerWidth;
         window.onresize = () =>{
             this.windowWidth = window.innerWidth;
-            console.log(this.windowWidth);
         }
     }
 }

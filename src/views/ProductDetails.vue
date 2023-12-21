@@ -57,12 +57,15 @@
                                 <v-icon style="color: #4c4c4c;" @click="(quantity !== 1 ? quantity-- : quantity)">mdi-minus</v-icon>
                             </div>
                             <div class="my-3">
-                                <span class="font-weight-bold">Subtotal : </span><span  style="font-size: 14px;" class="font-weight-bold">${{Math.ceil(specificProduct.price  -  (specificProduct.price * specificProduct.discountPercentage / 100)) }}</span>
+                                <span class="font-weight-bold">Subtotal : </span><span  style="font-size: 14px;" class="font-weight-bold">${{Math.ceil(specificProduct.price  -  (specificProduct.price * specificProduct.discountPercentage / 100)) * quantity  }}</span>
                             </div>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-100 text-white" color="deep-black-lighten-2" rounded="xl" variant="outlined">
-                               <span style="font-weight: bold; font-size: 16px;">Choose Option</span> 
+                            <v-btn @click="addItem(specificProduct)" style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-50 text-white d-block" color="deep-black-lighten-2" rounded="xl" variant="outlined">
+                               <span style="font-weight: bold; font-size: 16px;">Add To Cart</span> 
+                            </v-btn>
+                            <v-btn @click="deleteItem(specificProduct.id)" style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-100 text-white d-block" color="deep-black-lighten-2" rounded="xl" variant="outlined">
+                               <span style="font-weight: bold; font-size: 16px;">delete</span> 
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -76,6 +79,8 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import { productModule } from '../stores/products';
+import { cartStore } from '../stores/cart';
+
 
 
     export default {
@@ -89,11 +94,15 @@ import { productModule } from '../stores/products';
             ...mapState(productModule , ['specificProduct']),
         },
         methods:{
-            ...mapActions(productModule ,['getSpecificProduct'])
+            ...mapActions(productModule ,['getSpecificProduct',]),
+            ...mapActions(cartStore ,['addToCart','deleteItem']),
+            addItem(item){
+                item.quantity = this.quantity;
+                this.addToCart(item);
+            }
         },
     async beforeMount(){
         await this.getSpecificProduct(this.$route.params.id)
-        console.log(this.specificProduct);
         }
     }
 
