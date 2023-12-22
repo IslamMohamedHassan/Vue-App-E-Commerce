@@ -17,13 +17,15 @@
                         :breakpoints="breakPoints">
 
                         <swiper-slide v-for="(item, i) in product" :key="i">
-                            <v-card  @click="$router.replace(`./product/${item.id}`)" elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer;">
+                            <v-card   elevation="0" class="mx-auto my-2" max-width="374" style="cursor: pointer; position: relative;">
                                 <v-hover v-slot="{ isHovering, props }">
                                     <div style="height:250px;  overflow:hidden;">
                                         <v-img v-bind="props" cover
                                             :style="`transition: 1s ease-in-out ;  scale: ${isHovering ? 1.05 : 1}; height:100%;`"
                                             :src="(showenItem[item.title] ? showenItem[item.title] : item.thumbnail)"></v-img>
                                     </div>
+                                    <v-btn @click="openQuickView(item)" v-bind="props" :style="`transform:translate(-50%) ; position:absolute; top:115px;left:50% ;transition: 1s ease-in-out ;  display: ${isHovering? 'block' : 'none' };`" >Quick View</v-btn>
+
                                 </v-hover>
                                 <v-card-item>
                                     <v-card-title>{{ item.title }}</v-card-title>
@@ -57,7 +59,7 @@
 
                                 </v-btn-toggle>
                                 <v-card-actions class="d-block">
-                                    <v-btn style="width: 90%;" color="deep-black-lighten-2" rounded="xl"
+                                    <v-btn @click="$router.push(`product/${item.id}`)" style="width: 90%;" color="deep-black-lighten-2" rounded="xl"
                                         variant="tonal">
                                         Choose Option
                                     </v-btn>
@@ -107,6 +109,7 @@ export default {
             }
         }
     },
+    inject:["Emitter"],
     setup() {
         return {
             modules: [Pagination, Scrollbar, Autoplay],
@@ -126,6 +129,11 @@ export default {
             type: String,
         },
     },
+    methods:{
+        openQuickView(item){
+        this.Emitter.emit("quickView",item)
+    }
+    }
 
 }
 

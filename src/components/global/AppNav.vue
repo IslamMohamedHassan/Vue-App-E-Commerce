@@ -107,7 +107,6 @@
 <script>
 import { mapState } from 'pinia';
 import { productModule } from '../../stores/products';
-import { RouterLink } from 'vue-router';
 
 
 

@@ -9,8 +9,9 @@ import { productModule } from '../stores/products';
 import { mapActions,mapState } from 'pinia';
 import QualityFeatures from '../components/home_page/QualityFeatures.vue';
 import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
+import QuickView from '../components/home_page/QuickView.vue';
 
-
+QuickView
   export default{
     name:"HomeView",
     components:{
@@ -21,7 +22,9 @@ import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
       TopCategories,
       NewProducts,
       QualityFeatures,
-      WhyShopWithUs
+      WhyShopWithUs,
+      QuickView,
+
 
     },
     data(){
@@ -64,8 +67,7 @@ import WhyShopWithUs from '../components/home_page/WhyShopWithUs.vue';
     <img class="layout-img w-100" src="@/assets/images/tv-banner.webp" alt="bannerImg">
     <Products :product = skinCare title = "Skin Care"/>
     <WhyShopWithUs />
-
-
+    <QuickView/>
 
 </template>
   
