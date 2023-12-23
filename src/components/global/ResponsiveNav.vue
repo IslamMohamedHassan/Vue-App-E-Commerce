@@ -23,7 +23,7 @@
                                 </path>
                             </svg>
                             <div class="d-flex flex-column align-center" style=" cursor:pointer" @click="openCart">
-                        <v-badge location="top right" content="2" offset-x="-16" color="#1083ff">
+                        <v-badge location="top right" :content="CartItems.length" offset-x="-16" color="#1083ff">
                         </v-badge>
                         <div>
                             <svg style="width: 42px;" viewBox="0 0 30 30" class="icon icon-cart"
@@ -49,8 +49,13 @@
 </template>
 
 <script>
+import { cartStore } from '../../stores/cart';
+import { mapState} from 'pinia'
 export default {
     inject: ['Emitter'],
+    computed:{
+    ...mapState(cartStore,['CartItems'])
+    },
     methods: {
         openCart() {
             this.Emitter.emit('openCart')

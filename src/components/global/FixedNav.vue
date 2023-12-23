@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="d-flex flex-column align-center" style=" cursor:pointer" @click="openCart">
-                        <v-badge location="top right" content="2" offset-x="-16" color="#1083ff">
+                        <v-badge location="top right" :content="CartItems.length" offset-x="-16" color="#1083ff">
                         </v-badge>
                         <div>
                             <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +49,7 @@
 <script>
 import { mapState } from 'pinia'
 import { productModule } from '../../stores/products'
+import { cartStore } from '../../stores/cart'
 
 export default {
     name: "FixedNav",
@@ -58,7 +59,9 @@ export default {
             }
     },
     computed:{
-    ...mapState(productModule,['categories'])
+    ...mapState(productModule,['categories']),
+    ...mapState(cartStore,['CartItems'])
+
   },
     inject: ['Emitter'],
     methods: {

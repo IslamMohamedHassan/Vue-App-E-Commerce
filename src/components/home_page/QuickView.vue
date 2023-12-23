@@ -72,8 +72,8 @@
                             </div>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-100 text-white" color="deep-black-lighten-2" rounded="xl" variant="outlined">
-                               <span style="font-weight: bold; font-size: 16px;">Choose Option</span> 
+                            <v-btn :loading="btnLoading" @click="addItem(item)" style="height: 45px;  background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-100 text-white" color="deep-black-lighten-2" rounded="xl" variant="outlined">
+                               <span style="font-weight: bold; font-size: 16px;">Add To Cart</span> 
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -91,6 +91,10 @@
 
 <script>
 import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
+import { cartStore } from '../../stores/cart';
+import { mapActions } from 'pinia';
+
+
 
   export default {
     data () {
@@ -99,8 +103,21 @@ import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
         item:{},
         quantity:1,
         selectedImg :"",
-        loading : false
+        loading : false,
+        btnLoading : false
       }
+    },
+    methods:{
+        ...mapActions(cartStore,["addToCart"]),
+        addItem(item){
+            item.quantity = this.quantity;
+                this.btnLoading = true;
+                setTimeout(() => {
+                    this.btnLoading = false;
+                    this.Emitter.emit("showMsg", item.title)
+                }, 1000);
+                this.addToCart(item);
+            }
     },
     components:{
         VSkeletonLoader,

@@ -56,7 +56,7 @@
               <span style="color: #f7a833">Sign In</span>
             </div>
             <div class="d-flex flex-column align-center"  style=" cursor:pointer"  @click="openCart">
-              <v-badge location = "top right" content = "2" offset-x="-16" color="#1083ff">
+              <v-badge location = "top right" :content = "CartItems.length" offset-x="-16" color="#1083ff">
                   
                 </v-badge>
               <div> 
@@ -107,6 +107,8 @@
 <script>
 import { mapState } from 'pinia';
 import { productModule } from '../../stores/products';
+import { cartStore } from '../../stores/cart';
+
 
 
 
@@ -181,7 +183,8 @@ export default {
     }
   },
   computed:{
-    ...mapState(productModule,['categories'])
+    ...mapState(productModule,['categories']),
+    ...mapState(cartStore,['CartItems'])
   },
   mounted(){
     this.category = this.categories

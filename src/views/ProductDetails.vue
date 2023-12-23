@@ -67,11 +67,8 @@
                             </div>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn @click="addItem(specificProduct)" style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-50 text-white d-block" color="deep-black-lighten-2" rounded="xl" variant="outlined">
+                            <v-btn :loading="btnLoading" @click="addItem(specificProduct)" style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-50 text-white d-block" color="deep-black-lighten-2" rounded="xl" variant="outlined">
                                <span style="font-weight: bold; font-size: 16px;">Add To Cart</span> 
-                            </v-btn>
-                            <v-btn @click="deleteItem(specificProduct.id)" style="height: 45px; background-color: #202020;"  class="option-btn my-3 mx-auto px-7 w-100 text-white d-block" color="deep-black-lighten-2" rounded="xl" variant="outlined">
-                               <span style="font-weight: bold; font-size: 16px;">delete</span> 
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -90,12 +87,14 @@ import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
 
 
     export default {
+        inject:["Emitter"],
         name: "Product-Details",
         data(){
             return{
                 quantity:1,
                 selectedImg :"",
-                loading : false
+                loading : false,
+                btnLoading : false
             }
         },
         components:{
@@ -106,9 +105,14 @@ import { VSkeletonLoader } from 'vuetify/lib/components/index.mjs';
         },
         methods:{
             ...mapActions(productModule ,['getSpecificProduct',]),
-            ...mapActions(cartStore ,['addToCart','deleteItem']),
+            ...mapActions(cartStore ,['addToCart']),
             addItem(item){
-                item.quantity = this.quantity;
+            item.quantity = this.quantity;
+                this.btnLoading = true;
+                setTimeout(() => {
+                    this.btnLoading = false;
+                    this.Emitter.emit("showMsg", item.title)
+                }, 1000);
                 this.addToCart(item);
             }
         },
